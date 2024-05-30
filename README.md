@@ -1,7 +1,14 @@
-# Para rodar o exemplos de aula use:
+## Para rodar o exemplos de aula de assembly use:
 
 ```bash
 java -jar Mars.jar
 ```
 
-#### Observação é necessário ter o java jdk instalado
+## Para rodar o exemplos de aula de linguagem C use:
+
+```bash
+gcc -o output mips6.c 
+```
+
+
+#### Observação é necessário ter o java jdk e o gcc instalado
