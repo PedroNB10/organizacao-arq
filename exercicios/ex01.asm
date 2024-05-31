@@ -12,23 +12,23 @@ main:
 
 	
 	# leitura do valor digitado em v0
-	li $v0, 5 # ler inteiro 
-	syscall
+	li $v0, 5 # Carrega o valor 5 no registrador `$v0`. Na convenção do MIPS, esse valor indica que queremos ler um inteiro da entrada padrão.
+	syscall # Chama o sistema para executar a operação solicitada (neste caso, ler um inteiro). O valor lido será armazenado em `$v0`
 	
 if:	
 	slt $t0,$v0, $zero # if v0 < 0:  (slt = Set on Less than)
 	beq $t0, $zero, else # se t0 == 0 significa que v0 pode ser >= 0	   
 			   
-then:	
-	la $a0, negativo # load address 
-	li $v0, 4 # load immediate
-	syscall
+then:	# v0 por padrão imprime a string cujo endereço está carregado em $a0
+	la $a0, negativo # Carrega o endereço do string "negativo" no registrador `$a0`.
+	li $v0, 4 # Carrega o valor 4 no registrador `$v0`. Este valor indica que queremos imprimir um string.
+	syscall # Chama o sistema para executar a operação solicitada
 	j end_if
 	
 else:
-	la $a0, positivo # load address 
-	li $v0, 4 # load immediate
-	syscall
+	la $a0, positivo # Carrega o endereço do string "negativo" no registrador `$a0`.
+	li $v0, 4 # # Carrega o valor 4 no registrador `$v0`. Este valor indica que queremos imprimir um string.
+	syscall # Chama o sistema para executar a operação solicitada
 	j end_if
 	
 end_if:
