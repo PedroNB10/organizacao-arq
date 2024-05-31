@@ -1,20 +1,21 @@
-.data 
+.data # .data: especifica que os itens serão armazenados no segmento de dados
 
 msg1: .asciiz "Informe a temperatura: "
 sol: .asciiz "solido"
 liq: .asciiz "liquido"
-gas: .asciiz "gasoso"
+gas: .asciiz "gasoso" # .asciiz: armazena uma string (com terminador) na memória.
 
-.text
-.globl main
+.text #  .text: especifica a área de instruções (itens armazenados no segmento de texto)
+.globl main # .globl: declara o label seguinte como global. Normalmente usado para definir o main.
 
 main: 	# imprimir a mensagem
-	la $a0, msg1
+	# $a0 --> $a0 = address of null-terminated string to print
+	la $a0, msg1 # "informe a temperatura"
 	li $v0, 4  # imprimir string
 	syscall
 	
 	# leitura do valor digitado em v0
-	li $v0, 5 # ler inteiro 
+	li $v0, 5 # ler inteiro, v0 armazena o valor de entrada
 	syscall
 	
 	# o valor digitado está em v0 por padrão 
