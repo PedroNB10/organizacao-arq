@@ -11,8 +11,6 @@
 
 nao: .asciiz "nao"
 sim: .asciiz "sim"
-resp: .word 0 # espaço para armazenar um inteiro
-
 
 .text
 .globl main

@@ -4,10 +4,6 @@
 
 .data # .data: especifica que os itens serão armazenados no segmento de dados
 
-msg: .asciiz "Digite um numero:"
-resp: .word 0 # espaço para armazenar um inteiro
-
-
 .text
 .globl main
 

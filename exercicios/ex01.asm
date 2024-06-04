@@ -1,3 +1,7 @@
+# A) Escreva, em MIPS assembly, um programa que leia um único valor inteiro digitado pelo usuário e
+# informe se o valor digitado é positivo ou negativo. Em sua resposta, imprima apenas as palavras
+# “positivo” ou “negativo”. Não imprima outras mensagens de texto para indicar entrada/saída de dados.
+
 .data # .data: especifica que os itens serão armazenados no segmento de dados
 
 
