@@ -1,5 +1,10 @@
+# E) Escreva, em MIPS assembly, um programa que leia um inteiro N e implemente um contador regressivo,
+# mostrando na tela os números de N até 1. Imprima os números em uma linha, separados entre si por um
+# único espaço. Não imprima outras mensagens de texto para indicar entrada/saída de dados.
+
 .data
-newline: .asciiz "\n" # nova linha
+nova_linha: .asciiz "\n" # nova linha
+espaco: .asciiz " " # espaço
 
 .text
 
@@ -9,26 +14,20 @@ main:
     # Leitura do valor de N
     li $v0, 5       # syscall para leitura de um inteiro
     syscall
-    li $s0, 0       # Inicializa $s0 para uso posterior
-    add $s0, $s0, $v0 # N = valor lido (armazena em $s0)
 
-    # Inicializar o contador com N
-    li $s1, 0       # Inicializa $s1 para uso posterior
-    add $s1, $s1, $s0 # contador = N
-
+    add $s1, $s1, $v0 # s1 = s1 + N -> s1 armazena o valor de N
 inicio:
     # Verificar se o contador é zero
     beq $s1, $zero, fim # se contador == 0, fim
 
     # Imprimir o valor do contador
-    li $a0, 0       # Inicializa $a0 para uso posterior
-    add $a0, $a0, $s1 # move o valor do contador para $a0 (argumento para a syscall de impressão)
+    li $a0, 0       # Inicializa $a0 = 0 para a syscall de impressão de inteiros
+    add $a0, $a0, $s1 # a0 = a0 + s1
     li $v0, 1       # syscall para imprimir um inteiro
     syscall
 
-    # Imprimir um espaço (ASCII 32)
-    li $a0, 32      # espaço em ASCII
-    li $v0, 11      # syscall para imprimir um caractere
+    la $a0, espaco  # carrega o endereço de espaco
+    li $v0, 4      # syscall para imprimir um caractere
     syscall
 
     # Decrementar o contador
@@ -39,10 +38,6 @@ inicio:
 
 fim:
     # Imprimir uma nova linha no final
-    la $a0, newline # carrega o endereço de newline
+    la $a0, nova_linha # carrega o endereço de newline
     li $v0, 4       # syscall para imprimir uma string
-    syscall
-
-    # Terminar o programa
-    li $v0, 10      # syscall para terminar o programa
     syscall
