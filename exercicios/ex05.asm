@@ -3,7 +3,6 @@
 # único espaço. Não imprima outras mensagens de texto para indicar entrada/saída de dados.
 
 .data
-nova_linha: .asciiz "\n" # nova linha
 espaco: .asciiz " " # espaço
 
 .text
@@ -37,7 +36,3 @@ inicio:
     j inicio
 
 fim:
-    # Imprimir uma nova linha no final
-    la $a0, nova_linha # carrega o endereço de newline
-    li $v0, 4       # syscall para imprimir uma string
-    syscall
