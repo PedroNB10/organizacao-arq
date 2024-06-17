@@ -18,7 +18,15 @@ main:
 
     add $t2, $zero, $v0 # t2 = N
 
+    verifica_numero:
+        li $a0, 1
+        beq $t2, $zero, end
+
+        slti $t3, $t2, 0 # t3 = N < 0
+        beq $t3, 1, fatorial_nao_existe
+
     loop:
+        
 
         beq $t0, $t2, end
         addi $t0, $t0, 1
@@ -30,3 +38,6 @@ main:
     li $v0, 1
     add $a0, $zero, $t1
     syscall
+
+    fatorial_nao_existe:
+    
