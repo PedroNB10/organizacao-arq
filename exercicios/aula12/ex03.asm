@@ -5,9 +5,6 @@
 
 
 .data 
-
-sim: .asciiz "O número é um quadrado perfeito\n"
-nao: .asciiz "O número não é um quadrado perfeito\n"
 .text
 .globl main
 
